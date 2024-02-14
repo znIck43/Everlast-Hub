@@ -1,6 +1,6 @@
 repeat task.wait() until game:IsLoaded()
 
-local Players = game:GetService("Players")
+local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 local URLs = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AnimeFightersSim.lua",
