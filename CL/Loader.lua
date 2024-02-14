@@ -29,6 +29,6 @@ else
     })
 
     setclipboard("discord.gg/EverlastHub")
-    wait(2.5)
+    wait(1.5)
     Players:Kick("This game is not supported, discord.gg/EverlastHub.")
 end
