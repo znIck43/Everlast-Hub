@@ -1,6 +1,6 @@
 repeat task.wait() until game:IsLoaded()
 
-local Players = game:GetService("Players").LocalPlayer
+local Players = game:GetService("Players")
 local Id = game.PlaceId
 local URLs = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AnimeFightersSim.lua",
@@ -12,6 +12,7 @@ local URLs = {
     [nil] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/BloxFruitsSEA3.lua",
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Jailbreak.lua",
 }
+
 local URL = URLs[Id]
 
 local function LoadScript(name)
