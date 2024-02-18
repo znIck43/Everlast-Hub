@@ -41,7 +41,7 @@ end
 -- =      Anti AFK      =
 -- ======================
 
-_G.AntiAFK = false
+_G.AntiAFK = true
 
 local function Notify()
     game:GetService("StarterGui"):SetCore("SendNotification", {
