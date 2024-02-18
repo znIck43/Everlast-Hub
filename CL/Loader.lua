@@ -1,3 +1,7 @@
+-- ======================
+-- =      EH Loader     =
+-- ======================
+
 repeat task.wait() until game:IsLoaded()
 
 local Players = game:GetService("Players").LocalPlayer
@@ -28,7 +32,28 @@ else
         Icon = "rbxassetid://1234567890"
     })
 
-    setclipboard("discord.gg/EverlastHub")
+    setclipboard("discord.gg/everlasthub")
     wait(1.5)
-    Players:Kick("This game is not supported, discord.gg/EverlastHub.")
+    Players:Kick("This game is not supported, discord.gg/everlasthub.")
 end
+
+-- ======================
+-- =      Anti AFK      =
+-- ======================
+
+_G.AntiAFK = false
+
+local function Notify()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Game not supported",
+        Text = "Copied Discord server link to your clipboard",
+        Icon = "rbxassetid://1234567890"
+    })
+end
+
+while _G.AntiAFK do
+    Players.LocalPlayer.Character.Humanoid.Jump = true
+    wait(20)
+end
+
+Notify()
