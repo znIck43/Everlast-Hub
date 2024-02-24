@@ -16,8 +16,15 @@ local URLs = {
     [4996049426] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AllStarTD.lua",
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Jailbreak.lua",
 }
-
 local URL = URLs[Id]
+
+local function Notify(title, text)
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Icon = "rbxassetid://1234567890"
+    })
+end
 
 local function LoadScript(name)
     loadstring(game:HttpGet(name))()
@@ -26,14 +33,10 @@ end
 if URL then
     LoadScript(URL)
 else
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Game not supported",
-        Text = "Copied Discord server link to your clipboard",
-        Icon = "rbxassetid://1234567890"
-    })
-
+    Notify("Game not supported", "Copied Discord server link to your clipboard")
     setclipboard("discord.gg/everlasthub")
-    wait(1.5)
+
+    wait(1.2)
     Players:Kick("This game is not supported, discord.gg/everlasthub.")
 end
 
@@ -41,19 +44,12 @@ end
 -- =      Anti AFK      =
 -- ======================
 
-_G.AntiAFK = true
-
-local function Notify()
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Game not supported",
-        Text = "Copied Discord server link to your clipboard",
-        Icon = "rbxassetid://1234567890"
-    })
-end
+_G.AntiAFK = false
 
 while _G.AntiAFK do
-    Players.LocalPlayer.Character.Humanoid.Jump = true
-    wait(20)
+    Notify("Anti AFK = 🟢", "Copied Discord server link to your clipboard")
+    setclipboard("discord.gg/everlasthub")
+    
+    Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+    wait(10)
 end
-
-Notify()
