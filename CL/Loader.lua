@@ -36,8 +36,8 @@ if _G.Premium == false and Games[Id] then
 elseif _G.Premium then
     loadscript(EH_PS)
 else
-    setclipboard("discord.gg/everlasthub")
-    Players:Kick("Game not supported. Copied Discord server link to your clipboard.")
+    setclipboard("https://discord.gg/gbETDfyS5q")
+    Players:Kick("Game not supported. Copied Discord server invite to your clipboard.")
 end
 
 -- Check if EH loaded correctly
@@ -53,8 +53,8 @@ end
 _G.AntiAFK = false
 
 while _G.AntiAFK do
-    notify("Anti AFK = 🟢", "Copied Discord server link to your clipboard")
-    setclipboard("discord.gg/everlasthub")
+    notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard")
+    setclipboard("https://discord.gg/gbETDfyS5q")
     
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
     wait(10)
