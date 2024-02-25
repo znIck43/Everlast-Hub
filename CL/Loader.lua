@@ -2,6 +2,7 @@
 repeat task.wait() until game:IsLoaded()
 
 _G.Premium = false
+_G.AntiAFK = false
 
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
 local EH_GUI = game:GetService("CoreGui").CFAHubPremium2022
@@ -50,7 +51,6 @@ if game.Loaded then
 end
 
 -- Anti AFK Mode
-_G.AntiAFK = false
 
 while _G.AntiAFK do
     notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard")
