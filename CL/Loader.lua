@@ -1,12 +1,13 @@
--- ======================
--- =      EH Loader     =
--- ======================
-
+-- EH Loader
 repeat task.wait() until game:IsLoaded()
 
+_G.Premium = false
+
+local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
+local EH_GUI = game:GetService("CoreGui").CFAHubPremium2022
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
-local URLs = {
+local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AnimeFightersSim.lua",
     [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AnimeLastStand.lua",
     [7449423635] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/BloxFruitsSEA3.lua",
@@ -16,9 +17,9 @@ local URLs = {
     [4996049426] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/AllStarTD.lua",
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Jailbreak.lua",
 }
-local URL = URLs[Id]
 
-local function Notify(title, text)
+-- Functions, Notify and LoadScript
+local function notify(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = title,
         Text = text,
@@ -26,28 +27,33 @@ local function Notify(title, text)
     })
 end
 
-local function LoadScript(name)
+local function loadscript(name)
     loadstring(game:HttpGet(name))()
 end
 
-if URL then
-    LoadScript(URL)
+if _G.Premium == false and Games[Id] then
+    loadscript(Games[Id])
+elseif _G.Premium then
+    loadscript(EH_PS)
 else
-    Notify("Game not supported", "Copied Discord server link to your clipboard")
     setclipboard("discord.gg/everlasthub")
-
-    wait(1.2)
-    Players:Kick("This game is not supported, discord.gg/everlasthub.")
+    Players:Kick("Game not supported. Copied Discord server link to your clipboard.")
 end
 
--- ======================
--- =      Anti AFK      =
--- ======================
+-- Check if EH loaded correctly
+if game.Loaded then
+    if EH_GUI then
+        notify("Everlast Hub", "🟢")
+    else
+        Players:Kick("Everlast Hub did not load correctly. Please rejoin the game.")
+    end
+end
 
+-- Anti AFK Mode
 _G.AntiAFK = false
 
 while _G.AntiAFK do
-    Notify("Anti AFK = 🟢", "Copied Discord server link to your clipboard")
+    notify("Anti AFK = 🟢", "Copied Discord server link to your clipboard")
     setclipboard("discord.gg/everlasthub")
     
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
