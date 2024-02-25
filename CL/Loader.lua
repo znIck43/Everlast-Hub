@@ -34,7 +34,7 @@ end
 
 if _G.Premium == false and Games[Id] then
     loadscript(Games[Id])
-elseif _G.Premium then
+elseif _G.Premium == true then
     loadscript(EH_PS)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
