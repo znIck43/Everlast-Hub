@@ -1,4 +1,3 @@
--- EH Loader
 repeat task.wait() until game:IsLoaded()
 
 _G.Premium = false
@@ -19,7 +18,7 @@ local Games = {
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Jailbreak.lua",
 }
 
--- Functions, Notify and LoadScript
+-- Functions: Notify, MakeFolder and LoadScript
 local function notify(title, text)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = title,
@@ -28,9 +27,26 @@ local function notify(title, text)
     })
 end
 
+local function makefolder(name)
+    local foldername = name
+    local path = "C:\\Documents\\" .. foldername
+
+    local command = 'mkdir ' .. path
+    local success = os.execute(command)
+
+    if success then
+        print("Created EH folder!")
+    else
+        Players:Kick("Failed to create EH folder, please rejoin.")
+    end
+end
+
 local function loadscript(name)
     loadstring(game:HttpGet(name))()
 end
+
+setfpscap(240)
+makefolder("EverlastHub")
 
 if _G.Premium == false and Games[Id] then
     loadscript(Games[Id])
@@ -51,7 +67,6 @@ if game.Loaded then
 end
 
 -- Anti AFK Mode
-
 while _G.AntiAFK do
     notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard")
     setclipboard("https://discord.gg/gbETDfyS5q")
