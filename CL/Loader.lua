@@ -9,12 +9,12 @@ local EH_GUI = game:GetService("CoreGui").CFAHubPremium2022
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 local Games = {
-    [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeFightersSim.lua",
-    [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeLastStand.lua",
-    [15367026228] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeSoulsX.lua",
-    [2753915549] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/BloxFruits.lua",
-    [4996049426] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AllStarTD.lua",
-    [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/Jailbreak.lua"
+    [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
+    [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeLastStand.lua",
+    [15367026228] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeSoulsX.lua",
+    [2753915549] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/BloxFruits.lua",
+    [4996049426] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AllStarTD.lua",
+    [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/Jailbreak.lua"
 }
 
 -- Functions: Notify and LoadScript
