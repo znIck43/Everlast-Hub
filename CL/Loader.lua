@@ -51,9 +51,9 @@ makefolder("EverlastHub")
 if _G.Premium == false and Games[Id] then
     loadscript(Games[Id])
     notify("Free Script Version", "🟢 = Working", 10)
-elseif _G.Premium == true then
+elseif _G.Premium then
+    loadscript(EH_PS)    
     notify("Paid Script Version", "🟣 = Paid working", 10)
-    loadscript(EH_PS)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
     Players:Kick("Game not supported. Copied Discord server invite to your clipboard.")
@@ -75,6 +75,6 @@ if _G.AntiAFK then
 
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
     wait(10)
-    elseif _G.AntiAFK == false then
-        Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.None)
+else
+    Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.None)
 end
