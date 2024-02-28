@@ -53,11 +53,3 @@ if _G.AntiAFK then
 else
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.None)
 end
-
-if game.Loaded then
-    if EH_GUI then
-        notify("Everlast Hub", "🟢", 7)
-    else
-        Players:Kick("Everlast Hub did not load correctly. Please rejoin the game.")
-    end
-end
