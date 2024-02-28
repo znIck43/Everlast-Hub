@@ -11,12 +11,10 @@ local Id = game.PlaceId
 local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeFightersSim.lua",
     [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeLastStand.lua",
-    [7449423635] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/BloxFruitsSEA3.lua",
-    [4442272183] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/BloxFruitsSEA2.lua",
     [15367026228] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AnimeSoulsX.lua",
     [2753915549] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/BloxFruits.lua",
     [4996049426] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/AllStarTD.lua",
-    [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/Jailbreak.lua",
+    [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Games/Jailbreak.lua"
 }
 
 -- Functions: Notify and LoadScript
