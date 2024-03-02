@@ -1,5 +1,4 @@
 -- wait
--- CÓDIGO NÃO FOI UPADO NO GITHUB AINDA
 local Id = game.PlaceId
 
 local function BF3()
