@@ -2,10 +2,10 @@ repeat task.wait() until game:IsLoaded()
 setfpscap(240)
 
 _G.Premium = false
-_G.AntiAFK = false
+--_G.AntiAFK = false
 
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
-local EH_GUI = game:GetService("CoreGui").CFAHubPremium2022
+local Pro_Button = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Protected-Button.lua"
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 local Games = {
@@ -17,8 +17,8 @@ local Games = {
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/Jailbreak.lua"
 }
 
--- Functions: Notify and LoadScript
-local function notify(title, text, dur)
+-- Functions: Notify, LoadScript
+local function Notify(title, text, dur)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = title,
         Text = text,
@@ -26,28 +26,30 @@ local function notify(title, text, dur)
     })
 end
 
-local function loadscript(name)
+local function LoadScript(name)
     loadstring(game:HttpGet(name))()
 end
 
 if _G.Premium == false and Games[Id] then
-    loadscript(Games[Id])
-    notify("Free Script Version", "🟢 = Working", 10)
+    LoadScript(Games[Id])
+    LoadScript(Pro_Button)
+    Notify("Free Script Version", "🟢 = Working", 10)
 elseif _G.Premium then
-    loadscript(EH_PS)
-    notify("Paid Script Version", "🟣 = Working", 10)
+    LoadScript(EH_PS)
+    LoadScript(Pro_Button)
+    Notify("Paid Script Version", "🟣 = Working", 10)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
     Players:Kick("Game not supported. Copied Discord server invite to your clipboard.")
 end
 
--- Anti AFK Mode
+--[[ Anti AFK Mode
 if _G.AntiAFK then
-    notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard", 7)
+    Notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard", math.Random)
     setclipboard("https://discord.gg/gbETDfyS5q")
 
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
     wait(10)
 else
     Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.None)
-end
+end]]
