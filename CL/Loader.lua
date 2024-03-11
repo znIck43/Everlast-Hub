@@ -1,8 +1,8 @@
 repeat task.wait() until game:IsLoaded()
 setfpscap(240)
-
+-- https://discord.gg/gbETDfyS5q
 _G.Premium = false
---_G.AntiAFK = false
+-- _G.AntiAFK = false
 
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
 local Pro_Button = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Protected-Button.lua"
@@ -31,12 +31,11 @@ local function LoadScript(name)
 end
 
 if _G.Premium == false and Games[Id] then
-    LoadScript(Games[Id])
+    -- LoadScript(Games[Id])
     LoadScript(Pro_Button)
     Notify("Free Script Version", "🟢 = Working", 10)
 elseif _G.Premium then
     LoadScript(EH_PS)
-    LoadScript(Pro_Button)
     Notify("Paid Script Version", "🟣 = Working", 10)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
