@@ -36,5 +36,5 @@ elseif _G.Premium and Games[Id] then
     Notify("Paid Script Version", "🟣 = Working", 10)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
-    Players:Kick("Game not supported. Copied Discord server invite to your clipboard.")
+    Players:Kick("This game is not supported, please check your clipboard.")
 end
