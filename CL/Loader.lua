@@ -1,11 +1,10 @@
+-- https://discord.gg/gbETDfyS5q
 repeat task.wait() until game:IsLoaded()
 setfpscap(240)
--- https://discord.gg/gbETDfyS5q
+
 _G.Premium = false
--- _G.AntiAFK = false
 
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
-local Pro_Button = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Protected-Button.lua"
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 local Games = {
@@ -17,7 +16,6 @@ local Games = {
     [606849621] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/Jailbreak.lua"
 }
 
--- Functions: Notify, LoadScript
 local function Notify(title, text, dur)
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = title,
@@ -31,24 +29,12 @@ local function LoadScript(name)
 end
 
 if _G.Premium == false and Games[Id] then
-    -- LoadScript(Games[Id])
-    LoadScript(Pro_Button)
+    LoadScript(Games[Id])
     Notify("Free Script Version", "🟢 = Working", 10)
-elseif _G.Premium then
+elseif _G.Premium and Games[Id] then
     LoadScript(EH_PS)
     Notify("Paid Script Version", "🟣 = Working", 10)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
     Players:Kick("Game not supported. Copied Discord server invite to your clipboard.")
 end
-
---[[ Anti AFK Mode
-if _G.AntiAFK then
-    Notify("Anti AFK = 🟢", "Copied Discord server invite to your clipboard", math.Random)
-    setclipboard("https://discord.gg/gbETDfyS5q")
-
-    Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-    wait(10)
-else
-    Players.Character.Humanoid:ChangeState(Enum.HumanoidStateType.None)
-end]]
