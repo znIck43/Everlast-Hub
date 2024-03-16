@@ -4,7 +4,7 @@ setfpscap(240)
 
 _G.Premium = false
 
-local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/CL/EH-PS.lua"
+local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 local Games = {
