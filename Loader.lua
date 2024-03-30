@@ -4,9 +4,9 @@ setfpscap(240)
 
 _G.Premium = false
 
-local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
+local Paid = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
     [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeLastStand.lua",
@@ -32,7 +32,7 @@ if _G.Premium == false and Games[Id] then
     LoadScript(Games[Id])
     Notify("Free Script Version", "🟢 = Working", 10)
 elseif _G.Premium and Games[Id] then
-    LoadScript(EH_PS)
+    LoadScript(Paid)
     Notify("Paid Script Version", "🟣 = Working", 10)
 else
     setclipboard("https://discord.gg/gbETDfyS5q")
