@@ -6,7 +6,7 @@ _G.Premium = false
 
 local Players = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
-local Req = "https://github.com/znIck43/EverlastHub/blob/main/SystemUI.lua"
+local Req = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua"
 local Paid = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
