@@ -1,13 +1,16 @@
 -- https://discord.gg/gbETDfyS5q
 repeat task.wait() until game:IsLoaded()
-setfpscap(240)
+_G.Paid = false
 
-_G.Premium = false
+local Player = game:GetService("Players").LocalPlayer
+local StarterGui = game:GetService("StarterGui")
+local PlaceId = game.PlaceId
 
-local Players = game:GetService("Players").LocalPlayer
-local Id = game.PlaceId
-local Req = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua"
-local Paid = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
+local SystemUI = "https://github.com/znIck43/EverlastHub/blob/main/SystemUI.lua"
+local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
+
+local DiscordInv = "https://discord.gg/gbETDfyS5q"
+
 local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
     [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeLastStand.lua",
@@ -18,7 +21,7 @@ local Games = {
 }
 
 local function Notify(title, text, dur)
-    game:GetService("StarterGui"):SetCore("SendNotification", {
+    StarterGui:SetCore("SendNotification", {
         Title = title,
         Text = text,
         Duration = dur
@@ -29,14 +32,14 @@ local function LoadScript(name)
     loadstring(game:HttpGet(name))()
 end
 
-if _G.Premium == false and Games[Id] then
-    LoadScript(Req) wait()
-    LoadScript(Games[Id])
+if _G.Paid == false and Games[PlaceId] then
+    LoadScript(SystemUI)
+    LoadScript(Games[PlaceId])
     Notify("Free Script Version", "🟢 = Working", 10)
-elseif _G.Premium and Games[Id] then
-    LoadScript(Paid)
+elseif _G.Paid and Games[PlaceId] then
+    LoadScript(EH_PS)
     Notify("Paid Script Version", "🟣 = Working", 10)
 else
-    setclipboard("https://discord.gg/gbETDfyS5q")
-    Players:Kick("This game is not supported, please check your clipboard.")
+    setclipboard(DiscordInv)
+    Player:Kick("This game is not supported, please check your clipboard.")
 end
