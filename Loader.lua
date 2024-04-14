@@ -6,6 +6,7 @@ _G.Paid = false
 local UI = "https://github.com/znIck43/EverlastHub/blob/main/SystemUI.lua"
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 
+local LocalPlayer = game:GetService("Players").LocalPlayer
 local PlaceId = game.PlaceId
 local Games = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
@@ -19,6 +20,7 @@ local Games = {
 local function LoadScript(name)
     loadstring(game:HttpGet(name))()
 end
+if not Games[PlaceId] then LocalPlayer:Kick("Unsupported game; join Discord server for more information.") setclipboard(DiscordInv) end
 
 for _, v in Games[PlaceId] do
     if _G.Paid then
@@ -28,4 +30,5 @@ for _, v in Games[PlaceId] do
         LoadScript(v)
     end
 end
+
 setclipboard(DiscordInv)
