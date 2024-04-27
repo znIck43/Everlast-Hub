@@ -1,14 +1,15 @@
 repeat task.wait() until game:IsLoaded()
-local DiscordInv = "https://discord.gg/gbETDfyS5q"
 
-_G.Paid = false
+_G.Premium = false
+
+local DiscordInv = "https://discord.gg/gbETDfyS5q"
 
 local UI = "https://github.com/znIck43/EverlastHub/blob/main/SystemUI.lua"
 local EH_PS = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"
 
-local LocalPlayer = game:GetService("Players").LocalPlayer
-local PlaceId = game.PlaceId
-local Games = {
+local Player = game:GetService("Players").LocalPlayer
+local Id = game.PlaceId
+local Scripts = {
     [6299805723] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeFightersSim.lua",
     [12886143095] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeLastStand.lua",
     [15367026228] = "https://raw.githubusercontent.com/znIck43/EverlastHub/main/Free/AnimeSoulsX.lua",
@@ -20,15 +21,16 @@ local Games = {
 local function LoadScript(name)
     loadstring(game:HttpGet(name))()
 end
-if not Games[PlaceId] then LocalPlayer:Kick("Unsupported game; join Discord server for more information.") setclipboard(DiscordInv) end
 
-for _, v in Games[PlaceId] do
-    if _G.Paid then
+if Scripts[Id] then
+    if _G.Premium then
         LoadScript(EH_PS)
     else
         LoadScript(UI)
-        LoadScript(v)
+        LoadScript(Scripts[Id])
     end
+else
+    Player:Kick("Unsupported game, check your clipboard.")
 end
 
 setclipboard(DiscordInv)
