@@ -30,6 +30,7 @@ if Scripts[Id] then
         LoadScript(Scripts[Id])
     end
 else
+    setclipboard(DiscordInv)
     Player:Kick("Unsupported game, check your clipboard.")
 end
 
