@@ -1,6 +1,8 @@
 --[[
 	DEX Main Script
+	
 	Created by: Moon and Courtney
+	
 	RASPBERRY PI IS A SKIDDY SKID AF
 --]]
 
@@ -123,7 +125,6 @@ end
 -- Main Gui References
 local gui = createDexGui()
 gui.Parent = Services.CoreGui
-
 local contentL = gui:WaitForChild("ContentFrameL")
 local contentR = gui:WaitForChild("ContentFrameR")
 local resources = gui:WaitForChild("Resources")
@@ -526,7 +527,7 @@ local ScrollBar do
 				thumbPress = false
 			end)
 			newMt:Update()
-			
+			--while math.abs(mouse[dir] - mouseStart) == 0 do wait() end
 			mouseEvent = user.InputChanged:Connect(function(input)
 				if input.UserInputType == Enum.UserInputType.MouseMovement and thumbPress and releaseEvent.Connected then
 					local thumbFrameSize = scrollThumbFrame.AbsoluteSize[dir]-scrollThumb.AbsoluteSize[dir]
@@ -623,7 +624,7 @@ local ScrollBar do
 			if scrollDownEvent then scrollDownEvent:Disconnect() scrollDownEvent = nil end
 			scrollUpEvent = frame.MouseWheelForward:Connect(function()newMt:ScrollTo(newMt.Index - wheelIncrement)end)
 			scrollDownEvent = frame.MouseWheelBackward:Connect(function()newMt:ScrollTo(newMt.Index + wheelIncrement)end)
-      
+			--scrollOverlay.Parent = frame
 		end
 		newMt.SetScrollFrame = setScrollFrame
 		
@@ -1512,8 +1513,14 @@ function f.prevProportions(t,ind)
 end
 
 function f.buildPanes()
+	--print("\n-----\n")
+	--for i,v in pairs(RPaneItems) do print(v.Window) end
+	--print("\n-----")
+	
 	for i,v in pairs(RPaneItems) do
 		v.Window:TweenSizeAndPosition(UDim2.new(0,explorerSettings.RPaneWidth,v.Proportion,0),UDim2.new(0,0,f.prevProportions(RPaneItems,i-1),0),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.5,true)
+		--v.Window.Position = UDim2.new(0,0,prevProportions(RPaneItems,i-1),0)
+		--v.Window.Size = UDim2.new(0,explorerSettings.RPaneWidth,v.Proportion,0)
 	end
 end
 
