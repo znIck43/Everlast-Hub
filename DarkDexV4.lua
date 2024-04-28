@@ -524,7 +524,7 @@ local ScrollBar do
 				thumbPress = false
 			end)
 			newMt:Update()
-			--while math.abs(mouse[dir] - mouseStart) == 0 do wait() end
+				
 			mouseEvent = user.InputChanged:Connect(function(input)
 				if input.UserInputType == Enum.UserInputType.MouseMovement and thumbPress and releaseEvent.Connected then
 					local thumbFrameSize = scrollThumbFrame.AbsoluteSize[dir]-scrollThumb.AbsoluteSize[dir]
@@ -621,7 +621,6 @@ local ScrollBar do
 			if scrollDownEvent then scrollDownEvent:Disconnect() scrollDownEvent = nil end
 			scrollUpEvent = frame.MouseWheelForward:Connect(function()newMt:ScrollTo(newMt.Index - wheelIncrement)end)
 			scrollDownEvent = frame.MouseWheelBackward:Connect(function()newMt:ScrollTo(newMt.Index + wheelIncrement)end)
-			--scrollOverlay.Parent = frame
 		end
 		newMt.SetScrollFrame = setScrollFrame
 		
@@ -1510,14 +1509,8 @@ function f.prevProportions(t,ind)
 end
 
 function f.buildPanes()
-	--print("\n-----\n")
-	--for i,v in pairs(RPaneItems) do print(v.Window) end
-	--print("\n-----")
-	
 	for i,v in pairs(RPaneItems) do
 		v.Window:TweenSizeAndPosition(UDim2.new(0,explorerSettings.RPaneWidth,v.Proportion,0),UDim2.new(0,0,f.prevProportions(RPaneItems,i-1),0),Enum.EasingDirection.Out,Enum.EasingStyle.Quart,0.5,true)
-		--v.Window.Position = UDim2.new(0,0,prevProportions(RPaneItems,i-1),0)
-		--v.Window.Size = UDim2.new(0,explorerSettings.RPaneWidth,v.Proportion,0)
 	end
 end
 
@@ -2272,7 +2265,7 @@ function f.addObject(obj,noupdate,recurse)
 			Parent = nodes[obj.Parent],
 			ExplorerOrder = f.getRMDOrder(obj.ClassName),
 			Depth = f.depth(obj),
-			UID = tick()--RMD[v.ClassName] and (RMD[v.ClassName].ExplorerOrder or 999) or 999
+			UID = tick()
 		}
 		if newNode.ExplorerOrder <= 0 and not obj:IsA("Workspace") and obj.Parent == game then newNode.ExplorerOrder = 999 end
 		nodes[obj] = newNode
