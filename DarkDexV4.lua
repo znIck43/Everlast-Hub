@@ -1,8 +1,7 @@
---[[
-	DEX Main Script
-	Created by: Moon and Courtney
-	RASPBERRY PI IS A SKIDDY SKID AF
---]]
+-- DEX Main Script
+-- Created by: Moon and Courtney
+-- RASPBERRY PI IS A SKIDDY SKID AF
+
 
 -- Metas
 local Services = setmetatable({},{
@@ -1752,12 +1751,6 @@ function f.hookWindowListener(window)
 		end
 	end)
 	
-	--window.TopBar.InputEnded:connect(function(input)
-	--	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-	--		print("OH")
-	--	end
-	--end)
-	
 	window.InputBegan:connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			local inPane = f.checkInPane(window)
@@ -2176,7 +2169,6 @@ function f.newExplorer()
 			v.Position = UDim2.new(0,1-self.Index,0,v.Position.Y.Offset)
 		end
 	end
-	--explorerData = {Window = newgui, NodeData = {}, Scroll = explorerScroll, Entries = {}}
 	
 	explorerTree = newTree
 	
@@ -2211,10 +2203,6 @@ function f.newExplorer()
 end
 
 function f.refreshExplorer()
-	--if updateDebounce then return end
-	--updateDebounce = true
-	--Services.RunService.RenderStepped:wait()
-	--updateDebounce = false
 	explorerTree:Refresh()
 end
 
@@ -2282,7 +2270,6 @@ function f.addObject(obj,noupdate,recurse)
 		local newNode = {
 			Obj = obj,
 			Parent = nodes[obj.Parent],
-			--Ind = #nodes[obj.Parent] + 1,
 			ExplorerOrder = f.getRMDOrder(obj.ClassName),
 			Depth = f.depth(obj),
 			UID = tick()--RMD[v.ClassName] and (RMD[v.ClassName].ExplorerOrder or 999) or 999
@@ -2397,10 +2384,7 @@ function f.indexNodes(obj)
 	
 	local addObject = f.addObject
 	local removeObject = f.removeObject
-	
-	--game.DescendantAdded:Connect(function(obj) spawn(function() addObject(obj) end) end)
-	--game.DescendantRemoving:Connect(function(obj) spawn(function() removeObject(obj) end) end)
-	
+		
 	for i,v in pairs(game:GetChildren()) do
 		addObject(v,true,true)
 	end
@@ -2537,24 +2521,6 @@ function f.updateSearch(self)
 		end
 	end
 	
-	--[[
-	for i,v in pairs(game:GetDescendants()) do
-		searchCache[token] = {}
-		for token,check in pairs(checks) do
-			if searchCache[token] then for obj,_ in pairs(searchCache[token]) do results[obj] = true end break end
-			local success,found = pcall(check,v)
-			if found and nodes[v] then
-				results[v] = true
-				local par = v.Parent
-				while par and not results[par] do
-					results[par] = true
-					par = par.Parent
-				end
-				break
-			end
-		end
-	end
-	--]]
 	self.SearchChecks = checks
 	self.SearchResults = results
 end
@@ -2594,7 +2560,6 @@ function f.updateTree(self)
 		end
 		
 		for i = 1,#node do
-			--node[i].Ind = i
 			if not isSearching or (isSearching and isSearching[node[i].Obj]) then
 				local textWidth = node[i].Depth * 18 + f.textWidth(node[i].Obj.Name) + 22
 				nodeWidth = textWidth > nodeWidth and textWidth or nodeWidth
@@ -2608,7 +2573,6 @@ function f.updateTree(self)
 	
 	self.Tree = {}
 	fillTree(nodes[game],self.Tree)
-	--self.Scroll:Update()
 end
 
 function f.icon(frame,index)
@@ -2678,7 +2642,6 @@ local Selection do
 end
 
 function f.refreshExplorers(id)
-	--wait()
 	local e = explorerData
 			local window = e.Window
 			local scroll = e.Scroll
@@ -2995,36 +2958,6 @@ function f.getPropControl(prop,child)
 	return control(prop,child)
 end
 
---[[
-local propExpandable = {
-	["Vector3"] = true
-}
---]]
-
---[[
-function f.getChildrenControls(obj,prop)
-	local children = {}
-	if prop.ValueType == "Vector3" then
-		local newProp = {}
-		for i,v in pairs(prop) do newProp[i] = v end
-		newProp.ValueType = "double"
-		newProp.Name = "X"
-		newProp.ParentName = prop.Name
-		newProp.ParentType = prop.ValueType
-		local newNode = {
-			Prop = newProp,
-			RefName = prop.Class.."|"..prop.Name.."|X",
-			Control = f.getPropControl(newProp,{"X"}),
-			Depth = 2,
-			Obj = obj,
-			Children = {}
-		}
-		table.insert(children,newNode)
-	end
-	return children
-end
---]]
-
 function f.getChildProp(prop,data)
 	local newProp = {
 		Name = data.Name,
@@ -3064,10 +2997,7 @@ function f.updatePropTree(self)
 						Obj = v,
 						Control = f.getPropControl(prop),
 						Depth = 1,
-						--Children = f.getChildrenControls(v,prop)
 					}
-					--f.setupControls(newNode)
-					--newNode.Control.Children = newNode.Children
 					local textWidth = f.textWidth(prop.Name) + newNode.Depth * 18 + 5
 					propWidth = textWidth > propWidth and textWidth or propWidth
 					table.insert(props,newNode)
@@ -3152,11 +3082,9 @@ function f.newProperties()
 		end)						
 		entry.MouseButton1Down:Connect(function()
 			local node = self.Tree[i + self.Index]
-			--node.Control:Focus()
 		end)
 		entry.MouseButton2Down:Connect(function()
 			local node = self.Tree[i + self.Index]
-			--node.Control:Focus()
 		end)
 						
 		entry.Indent.Expand.MouseEnter:Connect(function()
@@ -3198,12 +3126,7 @@ function f.newProperties()
 				node.Control:Update(node.Obj[node.Prop.Name])
 			end
 		
-			-- Color switching
-			--if drawOrder % 2 == 0 and not node.Category then
-			--	entry.BackgroundColor3 = Color3.new(96/255,96/255,96/255)
-			--else
-				entry.BackgroundColor3 = Color3.new(80/255,80/255,80/255)
-			--end
+			entry.BackgroundColor3 = Color3.new(80/255,80/255,80/255)
 		else
 			entry.BackgroundColor3 = Color3.new(64/255,64/255,64/255)
 		end
@@ -3239,7 +3162,6 @@ function f.newProperties()
 			entry.Indent.EntryName.TextColor3 = Color3.new(1,1,1)
 			entry.Indent.BackgroundTransparency = 0
 		else
-			--entry.Indent.EntryName.TextColor3 = Color3.new(220/255, 220/255, 220/255)
 			entry.Indent.BackgroundTransparency = 1
 		end
 		
@@ -3283,19 +3205,7 @@ function f.newProperties()
 	
 	newTree.OnUpdate = function(self)
 		local guiX = propertiesPanel.Content.AbsoluteSize.X-16
-		--[[
-		propertiesScrollH.VisibleSpace = guiX
-		propertiesScrollH.TotalSpace = nodeWidth+10
-		if nodeWidth > guiX then
-			explorerScrollH.Gui.Visible = true
-			explorerScroll.Gui.Size = UDim2.new(0,16,1,-16)
-			self.DisplayFrame.Size = UDim2.new(1,-16,1,-16)
-		else
-			explorerScrollH.Gui.Visible = false
-			explorerScroll.Gui.Size = UDim2.new(0,16,1,0)
-			self.DisplayFrame.Size = UDim2.new(1,-16,1,0)
-		end
-		--]]
+
 		propertiesScroll.TotalSpace = #self.Tree + 1
 		propertiesScroll.VisibleSpace = math.ceil(self.DisplayFrame.AbsoluteSize.Y / 23)
 		propertiesScrollH:Update()		
@@ -3307,7 +3217,6 @@ function f.newProperties()
 			v.Position = UDim2.new(0,-self.Index,0,v.Position.Y.Offset)
 		end
 	end
-	--explorerData = {Window = newgui, NodeData = {}, Scroll = explorerScroll, Entries = {}}
 	
 	propertiesTree = newTree
 	
@@ -3318,16 +3227,6 @@ function f.newProperties()
 	local searchBox = newgui.TopBar.SearchFrame.Search
 	local searchAnim = searchBox.Parent.Entering
 	searchBox:GetPropertyChangedSignal("Text"):Connect(function()
-		--[[
-		local searchTime = tick()
-		lastSearch = searchTime
-		wait()
-		if lastSearch ~= searchTime then return end
-		newTree.SearchText = searchBox.Text
-		f.updateSearch(newTree)
-		explorerTree:TreeUpdate()
-		explorerTree:Refresh()
-		--]]
 	end)
 	
 	searchBox.Focused:Connect(function()
@@ -3395,7 +3294,6 @@ local function welcomePlayer()
 end
 
 mouse.Move:connect(function()
-	--if mouseWindow == nil then return end
 	local x,y = mouse.X,mouse.Y
 	
 	if x <= 50 then
