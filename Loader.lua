@@ -1,7 +1,5 @@
 setfpscap(240)
-
-local DiscordInv = "https://discord.gg/gbETDfyS5q"
-setclipboard(DiscordInv)
+setclipboard("https://discord.gg/gbETDfyS5q")
 
 _G.Premium = false
 
