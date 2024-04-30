@@ -9,12 +9,12 @@ local Player = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 
 local GamesId = {
-    6299805723,   -- Anime Fighters Simulator
-    12886143095,  -- Anime Last Stand
-    15367026228,  -- Anime Souls Simulator X
-    4996049426,   -- All Star Tower Defense
-    2753915549,   -- Blox Fruits
-    606849621    -- Jailbreak
+    6299805723,    -- Anime Fighters Simulator
+    12886143095,   -- Anime Last Stand
+    15367026228,   -- Anime Souls Simulator X
+    4996049426,    -- All Star Tower Defense
+    2753915549,    -- Blox Fruits
+    606849621      -- Jailbreak
 }
 
 if table.find(GamesId, Id) then 
