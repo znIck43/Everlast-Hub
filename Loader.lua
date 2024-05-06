@@ -1,8 +1,6 @@
 setfpscap(240)
 setclipboard("https://discord.gg/gbETDfyS5q")
 
-_G.Premium = false
-
 local Player = game:GetService("Players").LocalPlayer
 local Id = game.PlaceId
 
@@ -16,11 +14,7 @@ local Games = {
 }
 
 if Games[Id] then
-    if _G.Premium then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/EH-PS.lua"))()
-    else
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua"))()
-    end
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua"))()
 else
     Player:Kick("Unsupported game, check your clipboard")
 end
