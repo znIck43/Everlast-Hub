@@ -13,8 +13,13 @@ local Games = {
     [606849621] = "Jailbreak"
 }
 
-if Games[Id] then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua"))()
+if table.find(Games, Id) then
+    local sucess, response = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua") end)
+    if sucess then
+        loadstring(response)()
+    else
+        Player:Kick("Failed to load script: " .. response)
+    end
 else
-    Player:Kick("Unsupported game, check your clipboard")
+    Player:Kick("Unsupported game, check your clipboard.")
 end
