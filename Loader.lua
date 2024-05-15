@@ -13,7 +13,7 @@ local Games = {
     [606849621] = "Jailbreak"
 }
 
-if table.find(Games, Id) then
+if Id == Games[Id] then
     local sucess, response = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua") end)
     if sucess then
         loadstring(response)()
