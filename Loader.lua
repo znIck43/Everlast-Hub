@@ -14,7 +14,7 @@ local Games = {
 }
 
 if Id == Games[Id] then
-    local sucess, response = pcall(function() return game:HttpGet("https://raw.githubusercontent.com/znIck43/EverlastHub/main/SystemUI.lua") end)
+    local sucess, response = pcall(function() return game:HttpGet("nil") end)
     if sucess then
         loadstring(response)()
     else
