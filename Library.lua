@@ -1,22 +1,25 @@
 -- Original library made by: Kiet1308 (github.com/Kiet1308)
--- "Modified version" made by: znIck43 (github.com/znIck43)
 local CFAHub = {}
+
+warn("Preparing UI...")
 
 repeat wait() until game:IsLoaded()
 repeat wait() until game.Players.LocalPlayer
 repeat wait() until game.Players.LocalPlayer.Character
 repeat wait() until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
 
-local Fully_Support_Exploits = {"Nezur", "Ocean"}
+warn("UI Loaded.")
+
+local Fully_Support_Exploits = {"Krnl", "Synapse X", "Nezur", "Ocean"}
 
 local Tween = game:GetService("TweenService")
 local Tweeninfo = TweenInfo.new
 local Input = game:GetService("UserInputService")
 local Run = game:GetService("RunService")
-local Players = cloneref(game:GetService("Players"))
+local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
-local CoreGui = cloneref(game:GetService("CoreGui"))
-local HttpService = cloneref(game:GetService("HttpService"))
+local CoreGui = game:GetService("CoreGui")
+local HttpService = game:GetService("HttpService")
 local ms = Player:GetMouse()
 
 local Utility = {}
@@ -125,7 +128,7 @@ function CFAHub:DraggingEnabled(frame, parent)
     end)
 end
 
-local GuiName = "miabola"
+local GuiName = "CFAHubPremium2022"
 
 function CFAHub:CreateWindow(title, gameName, intro)
     title = title or "<font color=\"#1CB2F5\">CFA Hub Premium</font>"
