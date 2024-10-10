@@ -125,7 +125,7 @@ function CFAHub:DraggingEnabled(frame, parent)
     end)
 end
 
-local GuiName = "Everlast Hub"
+local GuiName = "miabola"
 
 function CFAHub:CreateWindow(title, gameName, intro)
     title = title or "<font color=\"#1CB2F5\">CFA Hub Premium</font>"
