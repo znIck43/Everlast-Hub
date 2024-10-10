@@ -1,5 +1,5 @@
--- Made by: Kiet1308 (github.com/Kiet1308)
--- Modified Version
+-- Original library made by: Kiet1308 (github.com/Kiet1308)
+-- "Modified version" made by: znIck43 (github.com/znIck43)
 local CFAHub = {}
 
 repeat wait() until game:IsLoaded()
